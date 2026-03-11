@@ -1,50 +1,38 @@
-# Anomaly Detection Project
+# 🏥 Advanced Health Metric Anomaly Detection
 
-This project implements anomaly detection on a health metric dataset using machine learning. It identifies unusual data points that deviate significantly from normal patterns.
+This repository contains a high-precision anomaly detection framework designed to monitor health metrics and identify significant deviations using the **Isolation Forest** machine learning algorithm.s 
 
-## Project Structure
+## 🌟 Project Overview
 
-- `note_book.ipynb`: Jupyter notebook containing the data analysis, machine learning model, and results.
-- `scatter_plot_dataset.csv`: The dataset containing health metrics (`feature_x`, `feature_y`) used for detection.
+Monitoring health metrics requires a robust system to differentiate between natural physiological variance and genuine anomalies. This project utilizes an unsupervised learning approach to score and classify data points based on their "degree of isolation" within a multi-dimensional feature space.
 
-## Implementation Details
+### 🧠 Core Technology: Isolation Forest
+Unlike traditional anomaly detection methods that model "normal" points and find outliers by distance, **Isolation Forest** explicitly isolates anomalies.
+- **How it works**: It builds an ensemble of "Isolation Trees." Since anomalies are few and different, they are partitioned closer to the root of the tree, requiring fewer splits to isolate than normal points.
+- **Efficiency**: This approach is highly effective for high-dimensional data and does not require a labeled "normal" dataset for training.
 
-### Anomaly Detection Model
-The project uses the **Isolation Forest** algorithm from `scikit-learn`. 
-- **Algorithm**: Isolation Forest works by isolating observations by randomly selecting a feature and then randomly selecting a split value between the maximum and minimum values of the selected feature.
-- **Labeling**: Results are mapped to:
-  - `0`: Normal
-  - `1`: Anomaly (Outlier)
+## 📊 Feature Highlights
 
-### Visualization
-The results are visualized using `matplotlib` scatter plots. 
-- Normal points are color-coded in blue.
-- Anomalies are highlighted in red for easy identification.
+- **Automated Labeling**: Segregates data into `Normal (0)` and `Anomaly (1)` with adjustable contamination thresholds.
+- **Dynamic Visualization**: High-resolution scatter plots that clearly demarcate detected outliers using color-coded semantics.
+- **Robust Preprocessing**: Includes automated handling of data indexing and mapping to ensure consistent results across re-runs.
 
-## Getting Started
+## 🛠️ Getting Started
 
-### Prerequisites
-
-You will need Python installed along with the following libraries:
-- `pandas`
-- `matplotlib`
-- `scikit-learn`
-
-You can install these directly within the notebook or via terminal:
+### Installation
+Ensure your environment has the following dependencies:
 ```bash
 pip install pandas matplotlib scikit-learn
 ```
 
-### Running the Notebook
+### Usage
+Execute the [note_book.ipynb](file:///Users/spurge/Desktop/anamoly%20Detection%20/note_book.ipynb) sequentially. The pipeline includes:
+1. **Data Acquisition**: Loading health metrics from CSV.
+2. **Model Training**: Fitting the Isolation Forest to the feature set.
+3. **Inference**: Generating anomaly scores and status flags.
+4. **Analysis**: Visual examination of the result distribution.
 
-1. Open `note_book.ipynb`.
-2. Run the cells in order to:
-   - Install dependencies.
-   - Load the dataset.
-   - Train the Isolation Forest model.
-   - Visualize the anomalies.
-
-## Fixes Applied
-- Resolved `ValueError` in data visualization indexing.
-- Fixed `InvalidIndexError` by using `.iloc` for Pandas indexing.
-- Switched from deprecated `sklearn` package to `scikit-learn`.
+## 🚀 Key Improvements
+- **Package Modernization**: Transitioned to `scikit-learn` for long-term stability.
+- **Index Optimization**: Implemented `.iloc` based positioning to prevent common Pandas indexing errors.
+- **Visual Clarity**: Enhanced plot aesthetics with legends, grids, and semantic color mapping.
